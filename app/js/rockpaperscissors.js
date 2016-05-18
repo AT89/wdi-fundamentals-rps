@@ -36,7 +36,7 @@ function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-      if (move === null)  {
+      if (move == null)  {
         move = randomPlay();
       }
 
@@ -49,9 +49,9 @@ function getWinner(playerMove,computerMove) {
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
-if (playerMove === computerMove);
+if (playerMove == computerMove)
 	winner = 'draw';
-if	(
+else if	(
 	(playerMove === 'rock' && computerMove === 'scissors') ||
    	(playerMove === 'paper' && computerMove === 'rock') ||
    	(playerMove === 'scissors' && computerMove === 'paper')
@@ -72,20 +72,22 @@ function playToFive() {
     var playerMove;
     var computerMove;
     var winner;
-    while (playerWins || computerWins <= 5) {
+    while ((playerWins  < 5) && (computerWins < 5)) {
     	playerMove = getPlayerMove();
     	computerMove = getComputerMove();
-    		winner = getWinner(playerMove, computerMove)
-    			if (winner = 'win')
-    				console.log('Player wins')
-    				playerWins++;
-				if	(winner = 'lose')
-					console.log('Player loses')
-					computerWins++;
-
+    		winner = getWinner(playerMove,computerMove);
+    			if (winner === 'win'){
+    				console.log('Player wins');
+    				playerWins++;}
+				else if	(winner === 'lose'){
+					console.log('Player loses');
+					computerWins++;}
+				else
+					console.log('Draw')
+				console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+			 	console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
     }
 
     return [playerWins, computerWins];
 }
-
-//playToFive();
+playToFive();
